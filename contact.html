@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us - Lifestyle Vibes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" />
+    <style>
+        /* Custom Font */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bs-light);
+            color: var(--bs-dark);
+        }
+
+        /* Navbar customization */
+        nav.navbar {
+            padding: 1rem;
+            background-color: var(--navbar-bg);
+            color: var(--navbar-color);
+        }
+
+        nav .navbar-brand {
+            transition: opacity 0.3s ease;
+        }
+
+        nav .navbar-brand:hover {
+            opacity: 0.7;
+        }
+
+        nav .nav-link {
+            margin-right: 1.5rem; /* Added space between links */
+            color: var(--navbar-color);
+        }
+
+        nav .dropdown-menu {
+            font-size: 0.9rem;
+            background-color: var(--navbar-dropdown-bg);
+            min-width: 100px; /* Set a minimum width for the dropdown */
+        }
+
+        nav .dropdown-item {
+            color: var(--navbar-dropdown-color);
+            padding: 0.2rem 1rem; /* Adjust padding */
+            margin: 0; /* Remove margin to tighten spacing */
+        }
+
+        /* Synchronizing colors for light and dark modes */
+        [data-bs-theme='light'] {
+            --bs-light: #ffffff;
+            --bs-dark: #212529;
+            --bs-primary: #0d6efd;
+            --navbar-bg: #f8f9fa; /* Light mode navbar background */
+            --navbar-color: #212529; /* Light mode navbar text color */
+            --navbar-dropdown-bg: #ffffff; /* Light mode dropdown background */
+            --navbar-dropdown-color: #212529; /* Light mode dropdown text color */
+        }
+
+        [data-bs-theme='dark'] {
+            --bs-light: #343a40;
+            --bs-dark: #ffffff;
+            --bs-primary: #1e7e34;
+            --navbar-bg: #212529; /* Dark mode navbar background */
+            --navbar-color: #ffffff; /* Dark mode navbar text color */
+            --navbar-dropdown-bg: #343a40; /* Dark mode dropdown background */
+            --navbar-dropdown-color: #ffffff; /* Dark mode dropdown text color */
+        }
+
+        /* Custom styles for sections */
+        section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .contact-card {
+            background: var(--bs-light);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto; /* Center aligned */
+            margin-bottom: 40px; /* Spacing with the info cards */
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card h2 {
+            font-size: 1.5rem; /* Sesuaikan ukuran font */
+            margin-bottom: 15px; /* Sesuaikan jarak */
+        }
+
+        .contact-card .form-label {
+            font-size: 0.9rem; /* Sesuaikan ukuran font */
+            font-weight: 500;
+            color: var(--bs-dark);
+        }
+
+        .contact-card input,
+        .contact-card textarea {
+            background-color: var(--bs-light);
+            border: 1px solid #ccc;
+            padding: 0.5rem; /* Kurangi padding untuk memperkecil input */
+            border-radius: 8px;
+        }
+
+        .contact-card button {
+            margin-top: 15px; /* Sesuaikan margin */
+            padding: 0.5rem 1.25rem; /* Kurangi padding pada button */
+            border-radius: 8px;
+        }
+
+
+        .info-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .info-card {
+            background: var(--bs-light);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            text-align: center;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--bs-light);
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-logo {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .footer-text {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .info-card i {
+            font-size: 2rem;
+            margin-bottom: 20px; /* More space for icons */
+            display: block;
+        }
+
+        .info-card h5 {
+            font-size: 1.4rem;
+            margin-bottom: 90px; /* More space between title and text */
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            margin-bottom: 20px; /* More spacing between paragraphs */
+            line-height: 1.6; /* Spacing within paragraph text */
+            color: var(--bs-dark);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .info-cards {
+                flex-direction: column;
+            }
+
+            .info-card {
+                margin-bottom: 20px;
+            }
+        }
+
+        section#contact {
+            margin-top: 100px; /* Sesuaikan dengan tinggi navbar */
+        }
+
+        .contact-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme='light'] .contact-card:hover {
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme='dark'] .contact-card:hover {
+            box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .info-cards:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme='light'] .info-card:hover {
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme='dark'] .info-card:hover {
+            box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.1);
+        }
+        
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><strong>Lifestyle Vibes</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Tombol Subscribe untuk memicu modal -->
+                        <button class="nav-link btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</button>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="themeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i id="themeIcon" class="bi bi-brightness-high"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="themeDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="setTheme('light')">
+                                    <i class="bi bi-brightness-high"></i> Light
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="setTheme('dark')">
+                                    <i class="bi bi-moon"></i> Dark
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="setTheme('auto')">
+                                    <i class="bi bi-circle-half"></i> Auto
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Modal Subscribe -->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="subscribeModalLabel">Subscribe For New Experience</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="subscribeForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phoneNumber" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="subscribeForm" class="btn btn-primary">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <!-- Contact Form Card -->
+            <div class="contact-card">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, feel free to reach out!</p>
+                <form>
+                    <div class="mb-3">
+                        <label for="contactName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="contactName" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="contactEmail" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactMessage" class="form-label">Message</label>
+                        <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="bi bi-chat-dots"></i>
+                    <h5>Live Chat & Help Center</h5>
+                    <p>Want a quick answer to a burning question?</p>
+                    <p>Visit our Help Center for FAQs or chat with a live agent.</p>
+                    <p><strong>Live Chat Hours:</strong></p>
+                    <p><strong>Monday–Friday:</strong></p>
+                    <p>6:00 am–4:00 pm</p>
+                    <p><strong>Saturday & Sunday:</strong></p>
+                    <p>6:00 am–4:00 pm</p>
+                </div>
+                <div class="info-card">
+                    <i class="bi bi-telephone"></i>
+                    <h5>Call Us</h5>
+                    <p>0822-6129-4552</p>
+                    <p><strong>Phone Hours:</strong></p>
+                    <p><strong>Monday–Friday:</strong></p>
+                    <p>6:00 am–4:00 pm</p>
+                    <p><strong>Saturday & Sunday:</strong></p>
+                    <p>Phone are closed, but please chat with us 6:00 am–4:00 pm</p>
+                </div>
+                <div class="info-card">
+                    <i class="bi bi-envelope"></i>
+                    <h5>Email Us</h5>
+                    <p>lifevibes@gmail.com</p>
+                    <p><strong>Email Hours:</strong></p>
+                    <p><strong>Monday–Friday:</strong></p>
+                    <p>6:00 am–4:00 pm</p>
+                    <p><strong>Saturday & Sunday:</strong></p>
+                    <p>6:00 am–4:00 pm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Section -->
+<section id="subscribe" class="my-5">
+    <div class="container">
+        <h2>Stay in the Loop</h2>
+        <h3>Subscribe to Our Newsletter</h3>
+        <div class="card text-center" style="background-color: #22303d; border-radius: 10px;">
+            <div class="card-body">
+                <p class="card-text">Join our community for exclusive updates and wellness tips!</p>
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name" aria-label="First Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" aria-label="Email" required>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100" onclick="event.preventDefault()">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="container">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+            <div class="footer-logo d-flex align-items-center">
+                <span class="ms-2"> © Lifestyle Vibes 2024</span>
+            </div>
+        </div>
+        <small class="footer-text">
+            <a href="#">Privacy Policy</a> •
+            <a href="#">Terms & Conditions</a>
+        </small>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@picocss/pico@1/js/pico.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us - Lifestyle Vibes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" />
+    <style>
+        /* Custom Font */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bs-light);
+            color: var(--bs-dark);
+        }
+
+        /* Navbar customization */
+        nav.navbar {
+            padding: 1rem;
+            background-color: var(--navbar-bg);
+            color: var(--navbar-color);
+        }
+
+        nav .navbar-brand {
+            transition: opacity 0.3s ease;
+        }
+
+        nav .navbar-brand:hover {
+            opacity: 0.7;
+        }
+
+        nav .nav-link {
+            margin-right: 1.5rem;
+            color: var(--navbar-color);
+        }
+
+        nav .dropdown-menu {
+            font-size: 0.9rem;
+            background-color: var(--navbar-dropdown-bg);
+            min-width: 100px;
+        }
+
+        nav .dropdown-item {
+            color: var(--navbar-dropdown-color);
+            padding: 0.2rem 1rem;
+            margin: 0;
+        }
+
+        [data-bs-theme='light'] {
+            --bs-light: #ffffff;
+            --bs-dark: #212529;
+            --bs-primary: #0d6efd;
+            --navbar-bg: #f8f9fa;
+            --navbar-color: #212529;
+            --navbar-dropdown-bg: #ffffff;
+            --navbar-dropdown-color: #212529;
+        }
+
+        [data-bs-theme='dark'] {
+            --bs-light: #343a40;
+            --bs-dark: #ffffff;
+            --bs-primary: #1e7e34;
+            --navbar-bg: #212529;
+            --navbar-color: #ffffff;
+            --navbar-dropdown-bg: #343a40;
+            --navbar-dropdown-color: #ffffff;
+        }
+
+        section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        #meditationButton:hover {
+            transform: scale(1.05);
+            background-color: #343a40;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--bs-light);
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-logo {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .footer-text {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        section#home {
+            margin-top: 100px; /* Sesuaikan dengan tinggi navbar */
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme='light'] .card:hover {
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme='dark'] .card:hover {
+            box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><strong>Lifestyle Vibes</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <!-- Tombol Subscribe untuk memicu modal -->
+                    <button class="nav-link btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</button>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="themeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i id="themeIcon" class="bi bi-brightness-high"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="themeDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="setTheme('light')">
+                                <i class="bi bi-brightness-high"></i> Light
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="setTheme('dark')">
+                                <i class="bi bi-moon"></i> Dark
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="setTheme('auto')">
+                                <i class="bi bi-circle-half"></i> Auto
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+   <!-- Modal Subscribe -->
+<div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="subscribeModalLabel">Subscribe For New Experience</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="subscribeForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phoneNumber" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="subscribeForm" class="btn btn-primary">Subscribe</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Home Section -->
+<section id="home">
+  <div class="container">
+      <h2>Welcome to the Lifestyle Hub</h2>
+      <h3>Explore Trends, wellness and living your best life</h3>
+      <p>Lifestyle is all about finding balance, embracing health, and living in the moment. Whether you're into fitness, mindfulness, or just looking to elevate your daily routines, you've come to the right place.</p>
+
+      <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <img src="/images//image1.jpg" class="d-block" alt="Image 1" />
+              </div>
+              <div class="carousel-item">
+                  <img src="/images/image2.jpg" class="d-block" alt="Image 2" />
+              </div>
+              <div class="carousel-item">
+                  <img src="/images/image3.jpg" class="d-block" alt="Image 3" />
+              </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+          </button>
+      </div>
+
+      <!-- Credit for the photos -->
+      <div class="text-center mt-2">
+          <small>Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a></small>
+      </div>
+      
+      <!-- Fashion Tips Section -->
+      <h3 class="mt-5">Explore Fashion & Trends</h3>
+      <p>Stay ahead in fashion with insights into what's trending, suistainable fashion tips and more.</p>
+      <p>Try this trending fashion tips !</p>
+      <div id="fashionTipsCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <div class="row">
+                      <div class="col-md-3">
+                          <div class="card mb-4">
+                              <img src="/images/fash1.jpg" class="card-img-top" alt="Fashion Tip 1" />
+                              <div class="card-body">
+                                  <h5 class="card-title">Layering Styles</h5>
+                                  <p class="card-text">Master the art of layering for a chic look.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="card mb-4">
+                              <img src="/images/fash2.jpg" class="card-img-top" alt="Fashion Tip 2" />
+                              <div class="card-body">
+                                  <h5 class="card-title">Accessorize Wisely</h5>
+                                  <p class="card-text">Add the right accessories to enhance your outfit.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="card mb-4">
+                              <img src="/images/fash1.jpg" class="card-img-top" alt="Fashion Tip 3" />
+                              <div class="card-body">
+                                  <h5 class="card-title">Choose Right Fit</h5>
+                                  <p class="card-text">Fit is everything, find what suits your body shape.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="card mb-4">
+                              <img src="/images/fash2.jpg" class="card-img-top" alt="Fashion Tip 4" />
+                              <div class="card-body">
+                                  <h5 class="card-title">Stay to Your Style</h5>
+                                  <p class="card-text">Wear what makes you feel comfortable and confident.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="row">
+                      <div class="col-md-3">
+                          <div class="card mb-4">
+                              <img src="/images/fash1.jpg" class="card-img-top" alt="Fashion Tip 5" />
+                              <div class="card-body">
+                                  <h5 class="card-title">Color Combine</h5>
+                                  <p class="card-text">Learn mix & match colors for a cohesive look.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="card mb-4">
+                              <img src="/images/fash2.jpg" class="card-img-top" alt="Fashion Tip 6" />
+                              <div class="card-body">
+                                  <h5 class="card-title">Invest Basics</h5>
+                                  <p class="card-text">Quality basics form the foundation of a great wardrobe.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="card mb-4">
+                              <img src="/images/fash1.jpg" class="card-img-top" alt="Fashion Tip 7" />
+                              <div class="card-body">
+                                  <h5 class="card-title">Dress for Occasion</h5>
+                                  <p class="card-text">Choose outfits that suit the event you're attending.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="card mb-4">
+                              <img src="/images/fash2.jpg" class="card-img-top" alt="Fashion Tip 8" />
+                              <div class="card-body">
+                                  <h5 class="card-title">Footwear Matters</h5>
+                                  <p class="card-text">A great outfit is often complemented by the right shoes.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#fashionTipsCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#fashionTipsCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+          </button>
+      </div>
+
+      <!-- Productivity Section -->
+      <h3 class="mt-5">Latest In Wellness</h3>
+      <p>Discover the latest trends in wellness, from meditation techniques to fitness tips that keep you healthy.</p>
+      <p>Try this to keep you in productivity !</p>
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card mb-4">
+                  <img src="/images/prod1.jpg" class="card-img-top" alt="Productivity Tip 1" />
+                  <div class="card-body">
+                      <h5 class="card-title">Set Clear Goals</h5>
+                      <p class="card-text">Define what you want to achieve each day.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card mb-4">
+                  <img src="/images/prod2.jpg" class="card-img-top" alt="Productivity Tip 2" />
+                  <div class="card-body">
+                      <h5 class="card-title">Eliminate Distractions</h5>
+                      <p class="card-text">Find a workspace that minimizes interruptions.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card mb-4">
+                  <img src="/images/prod3.jpg" class="card-img-top" alt="Productivity Tip 3" />
+                  <div class="card-body">
+                      <h5 class="card-title">Use Time Blocks</h5>
+                      <p class="card-text">Allocate specific time slots for tasks for eficiency.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Meditation Techniques Section -->
+<div class="container mt-5 text-center">
+    <h4 class="mb-3">Interested in Meditation Techniques?</h4>
+    <img class="meditation img-thumbnail shadow-sm mx-auto" src="/images/medt.jpg" alt="Meditation Image" style="max-width: 500px;">
+    <p class="mt-3">Follow the link below for detailed guidance and tips for meditation techniques:</p>
+    <button id="meditationButton" class="btn btn-primary btn-sm mx-auto" style="width: 200px; transition: transform 0.3s ease, background-color 0.3s ease;">
+        Read Here!
+    </button>
+</div>
+
+
+    <!-- Subscription Section -->
+<section id="subscribe" class="my-5">
+    <div class="container">
+        <h2>Stay in the Loop</h2>
+        <h3>Subscribe to Our Newsletter</h3>
+        <div class="card text-center" style="background-color: #22303d; border-radius: 10px;">
+            <div class="card-body">
+                <p class="card-text">Join our community for exclusive updates and wellness tips!</p>
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name" aria-label="First Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" aria-label="Email" required>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100" onclick="event.preventDefault()">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="container">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+            <div class="footer-logo d-flex align-items-center">
+                <span class="ms-2"> © Lifestyle Vibes 2024</span>
+            </div>
+        </div>
+        <small class="footer-text">
+            <a href="#">Privacy Policy</a> •
+            <a href="#">Terms & Conditions</a>
+        </small>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@picocss/pico@1/js/pico.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

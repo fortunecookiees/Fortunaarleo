@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us - Lifestyle Vibes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" />
+    <style>
+        /* Custom Font */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bs-light);
+            color: var(--bs-dark);
+        }
+
+        /* Navbar customization */
+        nav.navbar {
+            padding: 1rem;
+            background-color: var(--navbar-bg);
+            color: var(--navbar-color);
+        }
+
+        nav .navbar-brand {
+            transition: opacity 0.3s ease;
+        }
+
+        nav .navbar-brand:hover {
+            opacity: 0.7;
+        }
+
+        nav .nav-link {
+            margin-right: 1.5rem; /* Added space between links */
+            color: var(--navbar-color);
+        }
+
+        nav .dropdown-menu {
+            font-size: 0.9rem;
+            background-color: var(--navbar-dropdown-bg);
+            min-width: 100px; /* Set a minimum width for the dropdown */
+        }
+
+        nav .dropdown-item {
+            color: var(--navbar-dropdown-color);
+            padding: 0.2rem 1rem; /* Adjust padding */
+            margin: 0; /* Remove margin to tighten spacing */
+        }
+
+        /* Our Mission Section */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .mission-item {
+            background-color: var(--bs-light);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-item:hover {
+            transform: scale(1.05);
+        }
+
+        .mission-item i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--bs-primary);
+        }
+
+        /* Team Section */
+        .team-member {
+            text-align: center;
+            margin: 20px;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .team-member img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover img {
+            transform: scale(1.1);
+        }
+
+        .team-member h4 {
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--bs-light);
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-logo {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .footer-text {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Synchronizing colors for light and dark modes */
+        [data-bs-theme='light'] {
+            --bs-light: #ffffff;
+            --bs-dark: #212529;
+            --bs-primary: #0d6efd;
+            --navbar-bg: #f8f9fa; /* Light mode navbar background */
+            --navbar-color: #212529; /* Light mode navbar text color */
+            --navbar-dropdown-bg: #ffffff; /* Light mode dropdown background */
+            --navbar-dropdown-color: #212529; /* Light mode dropdown text color */
+        }
+
+        [data-bs-theme='dark'] {
+            --bs-light: #343a40;
+            --bs-dark: #ffffff;
+            --bs-primary: #1e7e34;
+            --navbar-bg: #212529; /* Dark mode navbar background */
+            --navbar-color: #ffffff; /* Dark mode navbar text color */
+            --navbar-dropdown-bg: #343a40; /* Dark mode dropdown background */
+            --navbar-dropdown-color: #ffffff; /* Dark mode dropdown text color */
+        }
+
+        /* Custom styles for sections */
+        section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        section#home {
+            margin-top: 100px; /* Sesuaikan dengan tinggi navbar */
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme='light'] .card:hover {
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme='dark'] .card:hover {
+            box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><strong>Lifestyle Vibes</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <!-- Tombol Subscribe untuk memicu modal -->
+                    <button class="nav-link btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</button>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="themeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i id="themeIcon" class="bi bi-brightness-high"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="themeDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="setTheme('light')">
+                                <i class="bi bi-brightness-high"></i> Light
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="setTheme('dark')">
+                                <i class="bi bi-moon"></i> Dark
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="setTheme('auto')">
+                                <i class="bi bi-circle-half"></i> Auto
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- Modal Subscribe -->
+<div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="subscribeModalLabel">Subscribe For New Experience</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="subscribeForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phoneNumber" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="subscribeForm" class="btn btn-primary">Subscribe</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Home Section -->
+<section id="home">
+  <div class="container">
+    <h2>About Lifestyle Vibes</h2>
+    <h3>Our Story & Vision</h3>
+    <p>
+        Lifestyle Vibes was created with a simple goal: to help people live
+        better, healthier, and more fulfilling lives. We believe that true
+        happiness comes from balance, mindfulness, and a deep connection to
+        the world around us.
+    </p>
+
+      <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <img src="/images/image1.jpg" class="d-block" alt="Image 1" />
+              </div>
+              <div class="carousel-item">
+                  <img src="/images/image2.jpg" class="d-block" alt="Image 2" />
+              </div>
+              <div class="carousel-item">
+                  <img src="/images/image3.jpg" class="d-block" alt="Image 3" />
+              </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+          </button>
+      </div>
+
+      <!-- Credit for the photos -->
+      <div class="text-center mt-2">
+          <small>Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a></small>
+      </div>
+
+
+   <!-- Our Mission Section -->
+   <section id="about">
+    <div class="container">
+        <h3>Our Mission</h3>
+        <div class="mission-grid">
+            <div class="mission-item">
+                <i class="bi bi-heart"></i>
+                <h4>Wellness</h4>
+                <p>We promote overall health and balance to help people live their best lives.</p>
+            </div>
+            <div class="mission-item">
+                <i class="bi bi-lightning-charge"></i>
+                <h4>Energy</h4>
+                <p>Our mission is to inspire people to embrace fitness and maintain an active lifestyle.</p>
+            </div>
+            <div class="mission-item">
+                <i class="bi bi-eye"></i>
+                <h4>Mindfulness</h4>
+                <p>We believe mindfulness is key to achieving true happiness and inner peace.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Meet Our Team Section -->
+<section id="team">
+    <div class="container">
+        <h3>Meet the Team</h3>
+        <p>Our team dedicated to bringing you the latest insights and trends to help you live your best life</p>
+        <div class="d-flex justify-content-center">
+            <div class="team-member">
+                <img src="/images/team1.png" alt="Team Member 1">
+                <h4>Oscar Philbert</h4>
+                <p>Fitness Expert</p>
+            </div>
+            <div class="team-member">
+                <img src="/images/team2.png" alt="Team Member 2">
+                <h4>Selene Lee</h4>
+                <p>Lifestyle Guru</p>
+            </div>
+            <div class="team-member">
+                <img src="/images/team3.png" alt="Team Member 3">
+                <h4>Fabian Jong</h4>
+                <p>Wellness Coach</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Subscription Section -->
+<section id="subscribe" class="my-5">
+    <div class="container">
+        <h2>Stay in the Loop</h2>
+        <h3>Subscribe to Our Newsletter</h3>
+        <div class="card text-center" style="background-color: #22303d; border-radius: 10px;">
+            <div class="card-body">
+                <p class="card-text">Join our community for exclusive updates and wellness tips!</p>
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name" aria-label="First Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" aria-label="Email" required>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100" onclick="event.preventDefault()">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="container">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+            <div class="footer-logo d-flex align-items-center">
+                <span class="ms-2"> © Lifestyle Vibes 2024</span>
+            </div>
+        </div>
+        <small class="footer-text">
+            <a href="#">Privacy Policy</a> •
+            <a href="#">Terms & Conditions</a>
+        </small>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@picocss/pico@1/js/pico.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- External JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
